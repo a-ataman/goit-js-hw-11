@@ -14,6 +14,7 @@ export function message(page, total, totalHits) {
     }
     Notiflix.Notify.success(`Hooray! We found ${totalHits} images.`);
   }
+  
   if (page === 1 && total.length === 0 && totalHits === 0) {
     btnMore.classList.add("is-hidden");
     Notiflix.Notify.failure(
