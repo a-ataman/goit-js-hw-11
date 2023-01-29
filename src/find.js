@@ -9,21 +9,28 @@ const inputForm = document.querySelector('form');
 const gallery = document.querySelector('.gallery');
 export const btnMore = document.querySelector('.load-more');
 btnMore.addEventListener('click', addButton);
-inputForm.addEventListener('submit', findBase);
+inputForm.addEventListener('submit', onSearch);
 
 let qwest = '';
 let page = 1;
+btnMore.classList.add('is-hidden');
 
-async function findBase(e) {
+ function onSearch(e) {
   e.preventDefault();
   gallery.innerHTML = '';
   page = 1;
   showImg(e.target.searchQuery.value, page);
-  btnMore.classList.add("is-hidden")
+  btnMore.classList.add("is-hidden");
+  if (!e.currentTarget.elements.searchQuery.value) {
+    return Notiflix.Notify.failure(
+      `❌ "Sorry, there are no images matching your search query. Please try again."`
+    );
+  }
 }
 
 async function showImg(qwery, page) {
   qwest = qwery;
+  btnMore.classList.add("is-hidden");
   try {
     const data = await onLoad(qwery, page);
     renderImages(data);
@@ -78,9 +85,10 @@ function renderImages(data) {
 
   gallery.insertAdjacentHTML('beforeend', markup);
 }
+
 function addButton() {
   page += 1;
-
+  btnMore.classList.remove("is-hidden");
   showImg(qwest, page);
 }
 
