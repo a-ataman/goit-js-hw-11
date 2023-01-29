@@ -9,7 +9,6 @@ const refs = {
   loadMoreBtn: document.querySelector('.load-more'),
 };
 
-
 const simpleLightboxOptions = {
   captionsData: 'alt',
   captionDelay: 250,
