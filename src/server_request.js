@@ -1,5 +1,5 @@
 import axios from "axios";
-const KEY = `33042709-ff335eccdd4e8b99fec3c8b69`;
+const KEY = `33212863-d1b6547963e87b60c0036ca60`;
 const MAIN_URL = `https://pixabay.com/api/`;
 
 export async function serverRequest(customRequest, page) {
